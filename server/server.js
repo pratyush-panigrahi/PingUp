@@ -3,6 +3,8 @@ import 'dotenv/config';
 import express from 'express';
 import connectDB from './configs/db.js';
 import { functions, inngest } from './inngest/index.js';
+import { serve } from "inngest/express";
+
 
 const app = express();
 
