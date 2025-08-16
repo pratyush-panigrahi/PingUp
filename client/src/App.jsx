@@ -1,4 +1,6 @@
-import { useUser } from "@clerk/clerk-react"
+import { useAuth, useUser } from "@clerk/clerk-react"
+import { useEffect } from "react"
+import { Toaster } from "react-hot-toast"
 import { Route, Routes } from "react-router-dom"
 import ChatBox from "./pages/ChatBox"
 import Connections from "./pages/Connections"
@@ -9,10 +11,16 @@ import Layout from "./pages/Layout"
 import Login from "./pages/Login"
 import Messages from "./pages/Messages"
 import Profile from "./pages/Profile"
-import { Toaster } from "react-hot-toast"
 
 const App = () => {
   const {user} = useUser()
+  const {getToken} = useAuth()
+
+  useEffect(()=>{
+    if(user){
+      getToken().then((token)=>console.log(token))
+    }
+  },[user])
   return (
     <>
     <Toaster />
