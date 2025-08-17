@@ -136,7 +136,8 @@ async ({ event, step }) => {
 
 const sendNotificationOfUnseenMessages = inngest.createFunction(
     { id: "send-unseen-messages-notification" },
-    { cron: "TZ=America/New_York 09:00" }, // Every Day at 9 AM
+    { cron: "0 9 * * *",   // 9:00 AM
+        tz: "America/New_York"}, // Every Day at 9 AM
         async ({ step }) => {
         const messages = await Message.find({ seen: false }).populate("to_user_id");
         const unseenCount = {};
