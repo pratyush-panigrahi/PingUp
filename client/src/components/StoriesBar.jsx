@@ -61,14 +61,20 @@ return (
                 )
             }
 
-            {
-                story.media_type === "image" ?
-                <img src={story.media_url} alt="" className="w-full h-full object-cover hover:scale-110 transition
-                duration-500 opacity-70 hover:opacity-80"/>
-                :
-                <video src={story.media_url} className="w-full h-full object-cover hover:scale-110 transition
-                duration-500 opacity-70 hover:opacity-80"/>
-            }
+            {story.media_type === "image" && story.media_url ? (
+            <img
+                src={story.media_url}
+                alt=""
+                className="w-full h-full object-cover hover:scale-110 
+                transition duration-500 opacity-70 hover:opacity-80"
+            />
+            ) : story.media_type === "video" && story.media_url ? (
+            <video
+                src={story.media_url}
+                className="w-full h-full object-cover hover:scale-110
+                transition duration-500 opacity-70 hover:opacity-80"
+                controls/>
+            ) : null}
         </div>
         ))}
     </div>

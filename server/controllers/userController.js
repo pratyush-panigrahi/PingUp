@@ -53,7 +53,7 @@ export const updateUserData = async (req, res) => {
             const buffer = fs.readFileSync(profile.path)
             const response = await imagekit.upload({
                 file: buffer,
-                fileName: profile.originalname,
+                fileName: cover.originalname,
             })
 
             const url = imagekit.url({
@@ -86,6 +86,7 @@ export const updateUserData = async (req, res) => {
         }
 
         const user = await User.findByIdAndUpdate(userId, updatedData, {new: true})
+        console.log("Updated user returned:", user);
 
         res.json({success: true, user, message: 'Profile updated successfully'})
 
