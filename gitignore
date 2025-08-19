@@ -13,3 +13,8 @@ node_modules/
 # Build folders
 dist/
 build/
+
+client/.env
+server/.env
+node_modules/
+
